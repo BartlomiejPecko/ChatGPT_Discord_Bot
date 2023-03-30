@@ -10,14 +10,24 @@ const client = new Client({
 });
 const config = require('../config.json');
 
-client.on('ready', () => {
-    console.log('I am ready');
+
+client.on('ready', (c) => {
+    console.log(` ${c.user.tag} is online.`);
   });
   
-  client.on('message', msg => {
-    if(msg.content === 'ping') {
-      msg.reply('pong');
+
+  client.on('messageCreate', (message) => {
+
+    if(message.author.bot) {
+      return; //to avoid the bot replying to itself
+    }
+
+    if(message.content === 'hello') {
+      message.reply('Hi!');
     }
   });
   
+
+
+
   client.login(config.token);
