@@ -28,6 +28,12 @@ client.on('ready', (c) => {
   });
   
 
+client.on('interactionCreate', (interaction) => {
+  if(interaction.isChatInputCommand()) return;
 
+  if (interaction.commandName === 'hibot') {
+    interaction.reply('Hi!');
+  }
+});
 
   client.login(config.token);
