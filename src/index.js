@@ -23,12 +23,12 @@ const configuration = new Configuration({
   
 const openai = new OpenAIApi(configuration);
 
-  client.on('messageCreate', async (message) => {
-
-    if(message.author.bot) return;
-    if(message.channel.id !== config.GPT3_ID) return;
-    if(message.content.startsWith('!')) return;
-
+client.on('messageCreate', async (message) => {
+  if(message.author.bot) return; //to avoid bot replying to itself
+  
+  
+  if(message.channel.id === config.GPT3_ID) {
+    if(message.content.startsWith('!')) return; // to be able to text in the channel using ! at the beggining
 
     let conversationLog = [{role: 'system', content: "You are a very friendly chatbot"}];
 
@@ -36,14 +36,42 @@ const openai = new OpenAIApi(configuration);
       role: 'user',
       content: message.content,
     });
-   await message.channel.sendTyping();
 
-   const result = await openai.createChatCompletion({
-    model: 'gpt-3.5-turbo',
-    messages: conversationLog,
-   })
-   message.reply(result.data.choices[0].message);
-  });
+    await message.channel.sendTyping();
+
+    const result = await openai.createChatCompletion({
+      model: 'gpt-3.5-turbo',
+      messages: conversationLog,
+    });
+
+    message.reply(result.data.choices[0].message);
+
+  } 
+  // Second channel
+  else if (message.channel.id === config.GPT_COMEDIAN) {
+    if(message.content.startsWith('!')) return;
+
+    let conversationLog = [{role: 'system', content: "You are the funniest comedian chatbot making jokes and saying silly things with every message."}];
+    conversationLog.push({
+      role: 'user',
+      content: message.content,
+    });
+    await message.channel.sendTyping();
+    
+    const result = await openai.createChatCompletion({
+      model: 'gpt-3.5-turbo',
+      messages: conversationLog,
+    });
+    message.reply(result.data.choices[0].message);
+  }
+});
+    
+
+   
+   
+
+   
+ 
   
 
 
