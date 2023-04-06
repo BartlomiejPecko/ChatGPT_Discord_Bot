@@ -26,18 +26,26 @@ const openai = new OpenAIApi(configuration);
 client.on('messageCreate', async (message) => {
   if(message.author.bot) return; //to avoid bot replying to itself
   
-  
+  // gpt standard
   if(message.channel.id === config.GPT3_ID) {
     if(message.content.startsWith('!')) return; // to be able to text in the channel using ! at the beggining
 
     let conversationLog = [{role: 'system', content: "You are a very friendly chatbot"}];
 
-    conversationLog.push({
-      role: 'user',
-      content: message.content,
-    });
-
     await message.channel.sendTyping();
+    let prevMessages = await message.channel.messages.fetch({ limit: 5});
+    prevMessages.reverse();
+
+    prevMessages.forEach((msg) => {
+      if(message.content.startsWith('!')) return;
+      if(msg.author.id !== client.user.id && message.author.bot) return;
+      if(msg.author.id !== message.author.id) return;
+
+      conversationLog.push({
+        role: 'user',
+        content: msg.content,
+      });
+    });
 
     const result = await openai.createChatCompletion({
       model: 'gpt-3.5-turbo',
@@ -119,7 +127,7 @@ client.on('messageCreate', async (message) => {
   else if (message.channel.id === config.GPT_CHILL) {
     if(message.content.startsWith('!')) return;
 
-    let conversationLog = [{role: 'system', content: "You are the most chill chatbot that uses ONLY slang language."}];
+    let conversationLog = [{role: 'system', content: /*  " You are the most chill chatbot that uses ONLY slang language." */ "Piszesz tylko slangiem i freestyle yo."}];
     conversationLog.push({
       role: 'user',
       content: message.content,
