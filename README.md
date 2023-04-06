@@ -2,6 +2,8 @@
 A small project made using Discord and Openai API to make an useful discord bot providing useful functionalities for Discord servers.
 Ignores input made by himself, other bots and messages starting with an exclamation mark. 
 
+Server invitation link to try it out: https://discord.gg/M22myCYb
+
 
 
 ![image](https://user-images.githubusercontent.com/113991373/230211504-a79dc066-4053-43c6-95eb-c8b7b93d6cc1.png)
