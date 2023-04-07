@@ -127,7 +127,7 @@ client.on('messageCreate', async (message) => {
   else if (message.channel.id === config.GPT_CHILL) {
     if(message.content.startsWith('!')) return;
 
-    let conversationLog = [{role: 'system', content: /*  " You are the most chill chatbot that uses ONLY slang language." */ "Piszesz tylko slangiem i freestyle yo."}];
+    let conversationLog = [{role: 'system', content:"You are the most chill chatbot that uses ONLY slang language."}];
     conversationLog.push({
       role: 'user',
       content: message.content,
@@ -147,6 +147,42 @@ client.on('messageCreate', async (message) => {
     if(message.content.startsWith('!')) return;
 
     let conversationLog = [{role: 'system', content: "You are a poet and speak in rhymes."}];
+    conversationLog.push({
+      role: 'user',
+      content: message.content,
+    });
+    await message.channel.sendTyping();
+    
+    const result = await openai.createChatCompletion({
+      model: 'gpt-3.5-turbo',
+      messages: conversationLog,
+    });
+    message.reply(result.data.choices[0].message);
+  }
+  // 8
+
+  else if (message.channel.id === config.GPT_RANDOM) {
+    if(message.content.startsWith('!')) return;
+
+    let conversationLog = [{role: 'system', content:"You reply in random language no matter what language anyone texts you in."}];
+    conversationLog.push({
+      role: 'user',
+      content: message.content,
+    });
+    await message.channel.sendTyping();
+    
+    const result = await openai.createChatCompletion({
+      model: 'gpt-3.5-turbo',
+      messages: conversationLog,
+    });
+    message.reply(result.data.choices[0].message);
+  }
+
+  // 9
+  else if (message.channel.id === config.GPT_TB) {
+    if(message.content.startsWith('!')) return;
+
+    let conversationLog = [{role: 'system', content:"Your task: You are a very weird chatbot that generates tables to every response and use only tables."}];
     conversationLog.push({
       role: 'user',
       content: message.content,
