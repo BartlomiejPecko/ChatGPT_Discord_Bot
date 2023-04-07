@@ -14,3 +14,6 @@ Server invitation link to try it out: https://discord.gg/M22myCYb
 ![image](https://user-images.githubusercontent.com/113991373/230215307-0720b4d2-822c-49a4-aebf-273c0a6f3d92.png)
 
 ![image](https://user-images.githubusercontent.com/113991373/230215462-b51138a9-0eff-4195-9988-6bd6b0e2812f.png)
+
+![image](https://user-images.githubusercontent.com/113991373/230683741-10462073-f528-437b-967f-872e75a09692.png)
+
