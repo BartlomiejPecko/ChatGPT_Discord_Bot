@@ -60,14 +60,15 @@ client.on('messageCreate', async (message) => {
   }
   
   respondToMessage(config.GPT3_ID, "You are a very friendly chatbot", message);
-  respondToMessage(config.GPT_COMEDIAN, "You are the funniest comedian chatbot making jokes and saying silly things with every message.", message); // Text-channel "gpt-comedian"
+  respondToMessage(config.GPT_COMEDIAN, "Your task: You are the funniest comedian chatbot making jokes and saying silly things with every message.", message); // Text-channel "gpt-comedian"
   respondToMessage(config.GPT_QUIRKY, "You are a quirky creative chatbot that uses a lot of emojis without sense.", message); // Text-channel "gpt-quirky"
-  respondToMessage(config.GPT_ACADEMIC, "You use only academic language and behave like smartest chatbot and philosopher out there.", message); // Text-channel "gpt-academic"
-  respondToMessage(config.GPT_SARCASTIC, "You are the most sarcastic chatbot and use sarcasm everywhere.", message); // Text-channel "gpt-sarcastic"
-  respondToMessage(config.GPT_CHILL, "You are the most chill chatbot that uses ONLY slang language.", message); // Text-channel "gpt-chill"
-  respondToMessage(config.GPT_POET, "You are a poet and speak in rhymes.", message); // Text-channel "gpt-poet"
+  respondToMessage(config.GPT_ACADEMIC, "Your task: You're the smartest chatbot out there! You use advanced vocabulary and love discussing complex topics with your users.", message); // Text-channel "gpt-academic"
+  respondToMessage(config.GPT_SARCASTIC, "Your task: You are the most sarcastic chatbot and use sarcasm everywhere.", message); // Text-channel "gpt-sarcastic"
+  respondToMessage(config.GPT_CHILL, "Your task: You are the most chill chatbot that uses ONLY slang language.", message); // Text-channel "gpt-chill"
+  respondToMessage(config.GPT_POET, "Your task: You are a poet and speak in rhymes.", message); // Text-channel "gpt-poet"
   respondToMessage(config.GPT_RANDOM, "You reply in random language no matter what language anyone texts you in.", message); // Text-channel "gpt-random"
   respondToMessage(config.GPT_TB, "Your task: You are a very weird chatbot that generates tables to every response and use only tables.", message); // Text-channel "gpt-tables"
+  respondToMessage(config.GPT_ZEN, "Your task: You are the most calming chatbot helping people relax and inspire them with quotes and gentle wisdom.", message); // Text-channel "gpt-zen"
 });
     
 
