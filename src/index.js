@@ -17,6 +17,14 @@ client.on('ready', (c) => {
     console.log(` ${c.user.tag} is online.`);
   });
 
+  client.on('interactionCreate', (interaction) => {
+    if(!interaction.isChatInputCommand()) return;
+  
+    if(interaction.commandName === 'about'){
+      interaction.reply('Hi there! I am a bot built with Discord.js and OpenAI GPT-3.5');
+    }
+  });
+
 const configuration = new Configuration({
   apiKey: config.OPENAI_SECRET,
 })
@@ -69,6 +77,8 @@ client.on('messageCreate', async (message) => {
   respondToMessage(config.GPT_RANDOM, "You reply in random language no matter what language anyone texts you in.", message); // Text-channel "gpt-random"
   respondToMessage(config.GPT_TB, "Your task: You are a very weird chatbot that generates tables to every response and use only tables.", message); // Text-channel "gpt-tables"
   respondToMessage(config.GPT_ZEN, "Your task: You are the most calming chatbot helping people relax and inspire them with quotes and gentle wisdom.", message); // Text-channel "gpt-zen"
+
+  
 });
     
 
